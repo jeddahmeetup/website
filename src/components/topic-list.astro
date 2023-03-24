@@ -1,0 +1,45 @@
+---
+import { isLoggedIn } from "../auth/client";
+import { AddTopic } from "./add-topic";
+import {Database} from '../../types/supabase';
+
+
+type Topic = Database['public']['Tables']['topics']['Row']
+
+interface Profile {}
+const { items } = Astro.props;
+
+const loggedIn = await isLoggedIn(Astro.request);
+console.log("loggedIn", loggedIn);
+
+export interface Props {
+  items: Array<Topic>;
+}
+---
+
+<div>
+  <ul class="space-y-4 flex flex-col">
+    {
+      items?.map((topic) => (
+        <li class="relative before:absolute before:inset-0 bg-gradient-to-t from-neutral-700 to-neutral-800">
+          <div class="m-[1px] p-4 bg-neutral-900 flex">
+            <div />
+            <div>
+              <div class="text-neutral-100">{topic.title}</div>
+              <div />
+              <div />
+            </div>
+            <div class="flex flex-col w-8 mr-auto border border-neutral-600 rounded-lg text-white">
+              <button class="rounded-t rounded-md w-8 h-8">+</button>
+              <div class="w-8 h-8 flex items-center justify-center">{topic.count ?? 0}</div>
+              <button class="rounded-t rounded-md w-8 h-8">-</button>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="mt-4">
+    {loggedIn ? <AddTopic client:load /> : null}
+  </div>
+</div>
