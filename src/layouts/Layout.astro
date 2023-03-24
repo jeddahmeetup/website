@@ -1,20 +1,13 @@
 ---
-import "@fontsource/vazirmatn/variable.css";
-import { getUser } from "../auth/client";
 export interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
-const user = await getUser(Astro.request);
-if (user != null) {
-}
-import { LoginButton } from "../components/LoginButton";
-import { UserProvider } from "../components/user-provider";
 ---
 
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -22,44 +15,26 @@ import { UserProvider } from "../components/user-provider";
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <UserProvider user={user}>
-    <body class="font-sans">
-      <header
-        class="nav-top sticky z-30 top-0 left-0 right-0 bg-white bg-white/95 dark:bg-neutral-900 dark:bg-neutral-900/95 backdrop-blur"
-      >
-        <nav class="relative">
-          <div
-            class="max-w-screen-lg mx-auto items-center py-3 flex md:space-x-8 xl:space-x-24 gap-4"
-          >
-            <a href="/"><img src="/logo.webp" class="h-10 w-auto" /></a>
-            <a href="/topics" class="text-[#e2caf3]">المواضيع</a>
-            <div style="margin-inline-start: auto;">
-              <LoginButton client:only />
-            </div>
-          </div>
-        </nav>
-      </header>
-      <slot />
-    </body>
-  </UserProvider>
-
-  <style is:global>
-    :root {
-      --accent: 124, 58, 237;
-      --accent-gradient: linear-gradient(
-        45deg,
-        rgb(var(--accent)),
-        #da62c4 30%,
-        white 60%
-      );
-    }
-    html {
-      font-family: system-ui, sans-serif;
-      background-color: #0e0e0e;
-    }
-    code {
-      font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-        DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-    }
-  </style>
+  <body>
+    <slot />
+  </body>
 </html>
+<style is:global>
+  :root {
+    --accent: 124, 58, 237;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      #da62c4 30%,
+      white 60%
+    );
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: #0e0e0e;
+  }
+  code {
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+</style>

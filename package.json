@@ -8,32 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "generate": "supabase gen types typescript --project-id ssjeimeeshkxayglwand  --schema public > types/supabase.ts"
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^2.0.2",
-    "@astrojs/tailwind": "^3.0.1",
-    "@astrojs/vercel": "^3.1.1",
-    "@fontsource/vazirmatn": "^4.5.5",
-    "@headlessui/react": "^1.7.10",
-    "@nanostores/react": "^0.4.1",
-    "@supabase/supabase-js": "^2.7.1",
-    "@tailwindcss/forms": "^0.5.3",
-    "@trpc/client": "^10.11.0",
-    "@trpc/server": "^10.11.0",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "astro": "^2.0.10",
-    "cookie": "^0.5.0",
-    "nanostores": "^0.7.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^3.2.6",
-    "zod": "^3.20.6"
-  },
-  "devDependencies": {
-    "@types/cookie": "^0.5.1",
-    "supabase": "^1.37.1"
+    "astro": "^2.0.0"
   }
 }
